@@ -3,6 +3,7 @@ const Medal = artifacts.require("./Medal.sol");
 contract("Medal", (accounts) => {
   let contract;
   const idERC165 = "0x01ffc9a7";
+  const idERC721 = "0x80ac58cd";
   const tokenName = "GoldMedal";
   const tokenSymbol = "GTC";
 
@@ -33,12 +34,23 @@ contract("Medal", (accounts) => {
   });
 
   describe("B.ERC165 checks", async () => {
-    it("1.Supports supportsInterface", async () => {
+    it("1.Supports ERC165 func supportsInterface", async () => {
       const erc165Complied = await contract.supportsInterface.call(idERC165);
       assert.equal(
         erc165Complied,
         true,
         `Returned ${erc165Complied} for ${idERC165}`
+      );
+    });
+  });
+
+  describe("C.ERC721 checks", async () => {
+    it("1.Supports ERC721 functions", async () => {
+      const erc721Complied = await contract.supportsInterface.call(idERC721);
+      assert.equal(
+        erc721Complied,
+        true,
+        `Returned ${erc721Complied} for ${idERC721}`
       );
     });
   });
