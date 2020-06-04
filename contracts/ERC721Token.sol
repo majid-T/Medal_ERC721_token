@@ -122,51 +122,61 @@ contract ERC721Token is IERC721Metadata, IERC165, IERC721 {
         bool approved
     );
 
-    function balanceOf(address owner)
-        public
-        override
-        view
-        returns (uint256 balance)
-    {
-        return 1;
+    function balanceOf(address owner) public override view returns (uint256) {
+        require(
+            owner != address(0),
+            "ERC721: balance query for the zero address"
+        );
+
+        return _ownedTokensCount[owner];
     }
 
-    function ownerOf(uint256 tokenId)
-        public
-        override
-        view
-        returns (address owner)
-    {
-        return address(this);
+    function ownerOf(uint256 tokenId) public override view returns (address) {
+        address owner = _tokenOwner[tokenId];
+        require(
+            owner != address(0),
+            "ERC721: owner query for nonexistent token"
+        );
+
+        return owner;
     }
 
-    function safeTransferFrom(
-        address from,
-        address to,
-        uint256 tokenId
-    ) public override payable {}
+    function approve(address to, uint256 tokenId) public override payable {
+        address owner = ownerOf(tokenId);
+        require(to != owner, "ERC721: approval to current owner");
 
-    function transferFrom(
-        address from,
-        address to,
-        uint256 tokenId
-    ) public override payable {}
+        require(
+            msg.sender == owner || isApprovedForAll(owner, msg.sender),
+            "ERC721: approve caller is not owner nor approved for all"
+        );
 
-    function approve(address to, uint256 tokenId) public override payable {}
+        _tokenApprovals[tokenId] = to;
+        emit Approval(owner, to, tokenId);
+    }
 
     function getApproved(uint256 tokenId)
         public
         override
         view
-        returns (address operator)
+        returns (address)
     {
-        return address(this);
+        require(
+            _tokenOwner[tokenId] != address(0),
+            "ERC721: approved query for nonexistent token"
+        );
+
+        return _tokenApprovals[tokenId];
     }
 
     function setApprovalForAll(address operator, bool _approved)
         public
         override
-    {}
+    {
+        require(operator != msg.sender, "ERC721: approve to caller");
+
+        _operatorApprovals[msg.sender][operator] = _approved;
+        emit ApprovalForAll(msg.sender, operator, _approved);
+    }
 
     function isApprovedForAll(address owner, address operator)
         public
@@ -174,7 +184,29 @@ contract ERC721Token is IERC721Metadata, IERC165, IERC721 {
         view
         returns (bool)
     {
-        return true;
+        return _operatorApprovals[owner][operator];
+    }
+
+    function transferFrom(
+        address from,
+        address to,
+        uint256 tokenId
+    ) public override payable {
+        require(
+            _isApprovedOrOwner(msg.sender, tokenId),
+            "ERC721: transfer caller is not owner nor approved"
+        );
+
+        _transferFrom(from, to, tokenId);
+    }
+
+    function safeTransferFrom(
+        address from,
+        address to,
+        uint256 tokenId
+    ) public override payable {
+        safeTransferFrom(from, to, tokenId, "");
+        // require(_checkOnERC721Received(from, to, tokenId, _data), "ERC721: transfer to non ERC721Receiver implementer");
     }
 
     function safeTransferFrom(
@@ -182,5 +214,51 @@ contract ERC721Token is IERC721Metadata, IERC165, IERC721 {
         address to,
         uint256 tokenId,
         bytes memory data
-    ) public override payable {}
+    ) public override payable {
+        transferFrom(from, to, tokenId);
+        // require(_checkOnERC721Received(from, to, tokenId, _data), "ERC721: transfer to non ERC721Receiver implementer");
+    }
+
+    //Internal functions
+    function _isApprovedOrOwner(address spender, uint256 tokenId)
+        internal
+        view
+        returns (bool)
+    {
+        require(
+            _tokenOwner[tokenId] != address(0),
+            "ERC721: operator query for nonexistent token"
+        );
+        address owner = ownerOf(tokenId);
+        return (spender == owner ||
+            getApproved(tokenId) == spender ||
+            isApprovedForAll(owner, spender));
+    }
+
+    function _transferFrom(
+        address from,
+        address to,
+        uint256 tokenId
+    ) internal {
+        require(
+            ownerOf(tokenId) == from,
+            "ERC721: transfer of token that is not own"
+        );
+        require(to != address(0), "ERC721: transfer to the zero address");
+
+        _clearApproval(tokenId);
+
+        _ownedTokensCount[from] -= 1;
+        _ownedTokensCount[to] += 1;
+
+        _tokenOwner[tokenId] = to;
+
+        emit Transfer(from, to, tokenId);
+    }
+
+    function _clearApproval(uint256 tokenId) private {
+        if (_tokenApprovals[tokenId] != address(0)) {
+            _tokenApprovals[tokenId] = address(0);
+        }
+    }
 }
