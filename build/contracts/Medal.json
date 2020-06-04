@@ -1,0 +1,114 @@
+{
+  "contractName": "Medal",
+  "abi": [],
+  "metadata": "{\"compiler\":{\"version\":\"0.6.0+commit.26b70077\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/C/Users/majid/Desktop/medalsToken/contracts/Medal.sol\":\"Medal\"},\"evmVersion\":\"byzantium\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/C/Users/majid/Desktop/medalsToken/contracts/Medal.sol\":{\"keccak256\":\"0xb36d26b1b8bf89c0136213cce55cc8c482b41b765231185584546e7b1a13f175\",\"urls\":[\"bzz-raw://484bb95029bd486b5f913783e27ea3a602b3d5e0c7cf674ca5978f68d3c446ef\",\"dweb:/ipfs/QmSaTKSktUmsWXyxbgB78KFztqSGN1Ne9G3RGSAMmWtRFx\"]}},\"version\":1}",
+  "bytecode": "0x6080604052348015600f57600080fd5b50603f80601d6000396000f3fe6080604052600080fdfea2646970667358221220689b7af02840e6bc48286721f2602da5851be187df8a1bd4f5b8bf87bf1db0b164736f6c63430006000033",
+  "deployedBytecode": "0x6080604052600080fdfea2646970667358221220689b7af02840e6bc48286721f2602da5851be187df8a1bd4f5b8bf87bf1db0b164736f6c63430006000033",
+  "sourceMap": "62:17:2:-:0;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;62:17:2;;;;;;;",
+  "deployedSourceMap": "62:17:2:-:0;;;;;",
+  "source": "// SPDX-License-Identifier: MIT\r\npragma solidity ^0.6.0;\r\n\r\n\r\ncontract Medal {}\r\n",
+  "sourcePath": "C:\\Users\\majid\\Desktop\\medalsToken\\contracts\\Medal.sol",
+  "ast": {
+    "absolutePath": "/C/Users/majid/Desktop/medalsToken/contracts/Medal.sol",
+    "exportedSymbols": {
+      "Medal": [
+        130
+      ]
+    },
+    "id": 131,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 129,
+        "literals": [
+          "solidity",
+          "^",
+          "0.6",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "33:23:2"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 130,
+        "linearizedBaseContracts": [
+          130
+        ],
+        "name": "Medal",
+        "nodeType": "ContractDefinition",
+        "nodes": [],
+        "scope": 131,
+        "src": "62:17:2"
+      }
+    ],
+    "src": "33:48:2"
+  },
+  "legacyAST": {
+    "absolutePath": "/C/Users/majid/Desktop/medalsToken/contracts/Medal.sol",
+    "exportedSymbols": {
+      "Medal": [
+        130
+      ]
+    },
+    "id": 131,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 129,
+        "literals": [
+          "solidity",
+          "^",
+          "0.6",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "33:23:2"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 130,
+        "linearizedBaseContracts": [
+          130
+        ],
+        "name": "Medal",
+        "nodeType": "ContractDefinition",
+        "nodes": [],
+        "scope": 131,
+        "src": "62:17:2"
+      }
+    ],
+    "src": "33:48:2"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.6.0+commit.26b70077.Emscripten.clang"
+  },
+  "networks": {
+    "5777": {
+      "events": {},
+      "links": {},
+      "address": "0x83716CB4B608665935DE246B053D08AC641e2969",
+      "transactionHash": "0x95d14ce0c4a703ce0ef6303f746b800df3d476c49d74fc9fe41278358a41a335"
+    }
+  },
+  "schemaVersion": "3.2.0",
+  "updatedAt": "2020-06-04T03:13:49.853Z",
+  "networkType": "ethereum",
+  "devdoc": {
+    "methods": {}
+  },
+  "userdoc": {
+    "methods": {}
+  }
+}
