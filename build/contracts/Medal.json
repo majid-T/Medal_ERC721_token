@@ -1,25 +1,99 @@
 {
   "contractName": "Medal",
-  "abi": [],
-  "metadata": "{\"compiler\":{\"version\":\"0.6.0+commit.26b70077\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/C/Users/majid/Desktop/medalsToken/contracts/Medal.sol\":\"Medal\"},\"evmVersion\":\"byzantium\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/C/Users/majid/Desktop/medalsToken/contracts/Medal.sol\":{\"keccak256\":\"0xb36d26b1b8bf89c0136213cce55cc8c482b41b765231185584546e7b1a13f175\",\"urls\":[\"bzz-raw://484bb95029bd486b5f913783e27ea3a602b3d5e0c7cf674ca5978f68d3c446ef\",\"dweb:/ipfs/QmSaTKSktUmsWXyxbgB78KFztqSGN1Ne9G3RGSAMmWtRFx\"]}},\"version\":1}",
-  "bytecode": "0x6080604052348015600f57600080fd5b50603f80601d6000396000f3fe6080604052600080fdfea2646970667358221220689b7af02840e6bc48286721f2602da5851be187df8a1bd4f5b8bf87bf1db0b164736f6c63430006000033",
-  "deployedBytecode": "0x6080604052600080fdfea2646970667358221220689b7af02840e6bc48286721f2602da5851be187df8a1bd4f5b8bf87bf1db0b164736f6c63430006000033",
-  "sourceMap": "62:17:2:-:0;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;62:17:2;;;;;;;",
-  "deployedSourceMap": "62:17:2:-:0;;;;;",
-  "source": "// SPDX-License-Identifier: MIT\r\npragma solidity ^0.6.0;\r\n\r\n\r\ncontract Medal {}\r\n",
-  "sourcePath": "C:\\Users\\majid\\Desktop\\medalsToken\\contracts\\Medal.sol",
+  "abi": [
+    {
+      "inputs": [],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "inputs": [],
+      "name": "name",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function",
+      "constant": true
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes4",
+          "name": "interfaceId",
+          "type": "bytes4"
+        }
+      ],
+      "name": "supportsInterface",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function",
+      "constant": true
+    },
+    {
+      "inputs": [],
+      "name": "symbol",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "_symbol",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function",
+      "constant": true
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_tokenId",
+          "type": "uint256"
+        }
+      ],
+      "name": "tokenURI",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function",
+      "constant": true
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.6.0+commit.26b70077\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"inputs\":[],\"name\":\"name\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes4\",\"name\":\"interfaceId\",\"type\":\"bytes4\"}],\"name\":\"supportsInterface\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"symbol\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"_symbol\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_tokenId\",\"type\":\"uint256\"}],\"name\":\"tokenURI\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{\"tokenURI(uint256)\":{\"details\":\"Throws if `_tokenId` is not a valid NFT. URIs are defined in RFC  3986. The URI may point to a JSON file that conforms to the \\\"ERC721  Metadata JSON Schema\\\".\"}}},\"userdoc\":{\"methods\":{\"symbol()\":{\"notice\":\"An abbreviated name for NFTs in this contract\"},\"tokenURI(uint256)\":{\"notice\":\"A distinct Uniform Resource Identifier (URI) for a given asset.\"}}}},\"settings\":{\"compilationTarget\":{\"/C/Users/majid/Desktop/projects/Medal_ERC721_token/contracts/Medal.sol\":\"Medal\"},\"evmVersion\":\"byzantium\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/C/Users/majid/Desktop/projects/Medal_ERC721_token/contracts/ERC721Token.sol\":{\"keccak256\":\"0x2af372ee8e597b83729701bfab4e31b2f4e41b7c72276bb32e4d2b1d263c4c14\",\"urls\":[\"bzz-raw://a0e39cf8087554c32efd33fb61df02ccbf6a89fffe69324dbd8fdd54f7309fca\",\"dweb:/ipfs/QmRqtZkan7Nc9ZewXebb4Btgk26A1VpMRCpTyh15UCkDaX\"]},\"/C/Users/majid/Desktop/projects/Medal_ERC721_token/contracts/IERC721.sol\":{\"keccak256\":\"0x784f8b07a368d5b9c93367bd9051f5162bab575372af048d8ff9675e025b1a90\",\"urls\":[\"bzz-raw://2468a33fb2aeb7dd34bf7e58e17f4da78e260c051dbbb8c4a7b4d97e4c3df062\",\"dweb:/ipfs/Qma6P3YyEV34ChKHAwrr8YSXtz3PgL1QAsjLJnC1juRtfo\"]},\"/C/Users/majid/Desktop/projects/Medal_ERC721_token/contracts/IERC721Metadata.sol\":{\"keccak256\":\"0x9e9cc1ba1f46b4d7f11ac73dc80db77303cee6f10da34d2c5b4912ffc16131dc\",\"urls\":[\"bzz-raw://c4c757f774599e283a34b4bbb591e40f5a2dcf7ca1c895f822c75f59e226056d\",\"dweb:/ipfs/QmfHxG2a3rFWQUD9L1PU1aboWvb7SANKsSRZAarH9FZeM7\"]},\"/C/Users/majid/Desktop/projects/Medal_ERC721_token/contracts/Medal.sol\":{\"keccak256\":\"0xc9e91c37504f0bc87330d7bbf4fa20770530c9a7c0eba1ed405eca46723b8da4\",\"urls\":[\"bzz-raw://426e1e19f478be0ac98e63da5e069bb61c866fbc307e67a3dbca1361f9dc830a\",\"dweb:/ipfs/QmW78hGukKVpBDH8Ezx29YCHNeY1vR5LVCEb6pfDqEkXJP\"]}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b506040518060400160405280600981526020017f476f6c644d6564616c00000000000000000000000000000000000000000000008152506040518060400160405280600381526020017f475443000000000000000000000000000000000000000000000000000000000081525081600090805190602001906100939291906100b2565b5080600190805190602001906100aa9291906100b2565b505050610157565b828054600181600116156101000203166002900490600052602060002090601f016020900481019282601f106100f357805160ff1916838001178555610121565b82800160010185558215610121579182015b82811115610120578251825591602001919060010190610105565b5b50905061012e9190610132565b5090565b61015491905b80821115610150576000816000905550600101610138565b5090565b90565b610506806101666000396000f3fe608060405234801561001057600080fd5b5060043610610069576000357c01000000000000000000000000000000000000000000000000000000009004806301ffc9a71461006e57806306fdde03146100d357806395d89b4114610156578063c87b56dd146101d9575b600080fd5b6100b96004803603602081101561008457600080fd5b8101908080357bffffffffffffffffffffffffffffffffffffffffffffffffffffffff19169060200190929190505050610280565b604051808215151515815260200191505060405180910390f35b6100db6102e8565b6040518080602001828103825283818151815260200191508051906020019080838360005b8381101561011b578082015181840152602081019050610100565b50505050905090810190601f1680156101485780820380516001836020036101000a031916815260200191505b509250505060405180910390f35b61015e61038a565b6040518080602001828103825283818151815260200191508051906020019080838360005b8381101561019e578082015181840152602081019050610183565b50505050905090810190601f1680156101cb5780820380516001836020036101000a031916815260200191505b509250505060405180910390f35b610205600480360360208110156101ef57600080fd5b810190808035906020019092919050505061042c565b6040518080602001828103825283818151815260200191508051906020019080838360005b8381101561024557808201518184015260208101905061022a565b50505050905090810190601f1680156102725780820380516001836020036101000a031916815260200191505b509250505060405180910390f35b600060036000837bffffffffffffffffffffffffffffffffffffffffffffffffffffffff19167bffffffffffffffffffffffffffffffffffffffffffffffffffffffff1916815260200190815260200160002060009054906101000a900460ff169050919050565b606060008054600181600116156101000203166002900480601f0160208091040260200160405190810160405280929190818152602001828054600181600116156101000203166002900480156103805780601f1061035557610100808354040283529160200191610380565b820191906000526020600020905b81548152906001019060200180831161036357829003601f168201915b5050505050905090565b606060018054600181600116156101000203166002900480601f0160208091040260200160405190810160405280929190818152602001828054600181600116156101000203166002900480156104225780601f106103f757610100808354040283529160200191610422565b820191906000526020600020905b81548152906001019060200180831161040557829003601f168201915b5050505050905090565b606060028054600181600116156101000203166002900480601f0160208091040260200160405190810160405280929190818152602001828054600181600116156101000203166002900480156104c45780601f10610499576101008083540402835291602001916104c4565b820191906000526020600020905b8154815290600101906020018083116104a757829003601f168201915b5050505050905091905056fea2646970667358221220f7797c63b7878a9f139ed0aa93720af56e5d3c8da4dbdbf6e5d35989a687fcc264736f6c63430006000033",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b5060043610610069576000357c01000000000000000000000000000000000000000000000000000000009004806301ffc9a71461006e57806306fdde03146100d357806395d89b4114610156578063c87b56dd146101d9575b600080fd5b6100b96004803603602081101561008457600080fd5b8101908080357bffffffffffffffffffffffffffffffffffffffffffffffffffffffff19169060200190929190505050610280565b604051808215151515815260200191505060405180910390f35b6100db6102e8565b6040518080602001828103825283818151815260200191508051906020019080838360005b8381101561011b578082015181840152602081019050610100565b50505050905090810190601f1680156101485780820380516001836020036101000a031916815260200191505b509250505060405180910390f35b61015e61038a565b6040518080602001828103825283818151815260200191508051906020019080838360005b8381101561019e578082015181840152602081019050610183565b50505050905090810190601f1680156101cb5780820380516001836020036101000a031916815260200191505b509250505060405180910390f35b610205600480360360208110156101ef57600080fd5b810190808035906020019092919050505061042c565b6040518080602001828103825283818151815260200191508051906020019080838360005b8381101561024557808201518184015260208101905061022a565b50505050905090810190601f1680156102725780820380516001836020036101000a031916815260200191505b509250505060405180910390f35b600060036000837bffffffffffffffffffffffffffffffffffffffffffffffffffffffff19167bffffffffffffffffffffffffffffffffffffffffffffffffffffffff1916815260200190815260200160002060009054906101000a900460ff169050919050565b606060008054600181600116156101000203166002900480601f0160208091040260200160405190810160405280929190818152602001828054600181600116156101000203166002900480156103805780601f1061035557610100808354040283529160200191610380565b820191906000526020600020905b81548152906001019060200180831161036357829003601f168201915b5050505050905090565b606060018054600181600116156101000203166002900480601f0160208091040260200160405190810160405280929190818152602001828054600181600116156101000203166002900480156104225780601f106103f757610100808354040283529160200191610422565b820191906000526020600020905b81548152906001019060200180831161040557829003601f168201915b5050505050905090565b606060028054600181600116156101000203166002900480601f0160208091040260200160405190810160405280929190818152602001828054600181600116156101000203166002900480156104c45780601f10610499576101008083540402835291602001916104c4565b820191906000526020600020905b8154815290600101906020018083116104a757829003601f168201915b5050505050905091905056fea2646970667358221220f7797c63b7878a9f139ed0aa93720af56e5d3c8da4dbdbf6e5d35989a687fcc264736f6c63430006000033",
+  "sourceMap": "93:95:3:-:0;;;130:55;8:9:-1;5:2;;;30:1;27;20:12;5:2;130:55:3;981:125:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1064:5;1055:6;:14;;;;;;;;;;;;:::i;:::-;;1091:7;1080:8;:18;;;;;;;;;;;;:::i;:::-;;981:125;;93:95:3;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;:::o;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o;:::-;;;;;;;",
+  "deployedSourceMap": "93:95:3:-:0;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;93:95:3;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;2170:183:0;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;2170:183:0;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;1114:93;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;23:1:-1;8:100;33:3;30:1;27:10;8:100;;;99:1;94:3;90:11;84:18;80:1;75:3;71:11;64:39;52:2;49:1;45:10;40:15;;8:100;;;12:14;1114:93:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1278:105;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;23:1:-1;8:100;33:3;30:1;27:10;8:100;;;99:1;94:3;90:11;84:18;80:1;75:3;71:11;64:39;52:2;49:1;45:10;40:15;;8:100;;;12:14;1278:105:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1662:189;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;1662:189:0;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;23:1:-1;8:100;33:3;30:1;27:10;8:100;;;99:1;94:3;90:11;84:18;80:1;75:3;71:11;64:39;52:2;49:1;45:10;40:15;;8:100;;;12:14;1662:189:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;2170:183;2283:4;2312:20;:33;2333:11;2312:33;;;;;;;;;;;;;;;;;;;;;;;;;;;2305:40;;2170:183;;;:::o;1114:93::-;1160:13;1193:6;1186:13;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1114:93;:::o;1278:105::-;1326:21;1367:8;1360:15;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1278:105;:::o;1662:189::-;1764:13;1802:10;1795:17;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1662:189;;;:::o",
+  "source": "// SPDX-License-Identifier: MIT\r\npragma solidity ^0.6.0;\r\n\r\nimport \"./ERC721Token.sol\";\r\n\r\n\r\ncontract Medal is ERC721Token {\r\n    constructor() public ERC721Token(\"GoldMedal\", \"GTC\") {}\r\n}\r\n",
+  "sourcePath": "C:\\Users\\majid\\Desktop\\projects\\Medal_ERC721_token\\contracts\\Medal.sol",
   "ast": {
-    "absolutePath": "/C/Users/majid/Desktop/medalsToken/contracts/Medal.sol",
+    "absolutePath": "/C/Users/majid/Desktop/projects/Medal_ERC721_token/contracts/Medal.sol",
     "exportedSymbols": {
       "Medal": [
-        130
+        240
       ]
     },
-    "id": 131,
+    "id": 241,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 129,
+        "id": 228,
         "literals": [
           "solidity",
           "^",
@@ -27,40 +101,168 @@
           ".0"
         ],
         "nodeType": "PragmaDirective",
-        "src": "33:23:2"
+        "src": "33:23:3"
+      },
+      {
+        "absolutePath": "/C/Users/majid/Desktop/projects/Medal_ERC721_token/contracts/ERC721Token.sol",
+        "file": "./ERC721Token.sol",
+        "id": 229,
+        "nodeType": "ImportDirective",
+        "scope": 241,
+        "sourceUnit": 107,
+        "src": "60:27:3",
+        "symbolAliases": [],
+        "unitAlias": ""
       },
       {
         "abstract": false,
-        "baseContracts": [],
-        "contractDependencies": [],
+        "baseContracts": [
+          {
+            "arguments": null,
+            "baseName": {
+              "contractScope": null,
+              "id": 230,
+              "name": "ERC721Token",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 106,
+              "src": "111:11:3",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_ERC721Token_$106",
+                "typeString": "contract ERC721Token"
+              }
+            },
+            "id": 231,
+            "nodeType": "InheritanceSpecifier",
+            "src": "111:11:3"
+          }
+        ],
+        "contractDependencies": [
+          11,
+          106,
+          226
+        ],
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 130,
+        "id": 240,
         "linearizedBaseContracts": [
-          130
+          240,
+          106,
+          11,
+          226
         ],
         "name": "Medal",
         "nodeType": "ContractDefinition",
-        "nodes": [],
-        "scope": 131,
-        "src": "62:17:2"
+        "nodes": [
+          {
+            "body": {
+              "id": 238,
+              "nodeType": "Block",
+              "src": "183:2:3",
+              "statements": []
+            },
+            "documentation": null,
+            "id": 239,
+            "implemented": true,
+            "kind": "constructor",
+            "modifiers": [
+              {
+                "arguments": [
+                  {
+                    "argumentTypes": null,
+                    "hexValue": "476f6c644d6564616c",
+                    "id": 234,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": true,
+                    "kind": "string",
+                    "lValueRequested": false,
+                    "nodeType": "Literal",
+                    "src": "163:11:3",
+                    "subdenomination": null,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_stringliteral_02a37d804c61cb83cfce64dff323c5fc8f31e42e4cb72680c50a9dfcd0cd1514",
+                      "typeString": "literal_string \"GoldMedal\""
+                    },
+                    "value": "GoldMedal"
+                  },
+                  {
+                    "argumentTypes": null,
+                    "hexValue": "475443",
+                    "id": 235,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": true,
+                    "kind": "string",
+                    "lValueRequested": false,
+                    "nodeType": "Literal",
+                    "src": "176:5:3",
+                    "subdenomination": null,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_stringliteral_7438d7d73ec9e46da3d0aa51b56d02f7e7bc34bd8939d3f4c05474ab1961f8e5",
+                      "typeString": "literal_string \"GTC\""
+                    },
+                    "value": "GTC"
+                  }
+                ],
+                "id": 236,
+                "modifierName": {
+                  "argumentTypes": null,
+                  "id": 233,
+                  "name": "ERC721Token",
+                  "nodeType": "Identifier",
+                  "overloadedDeclarations": [],
+                  "referencedDeclaration": 106,
+                  "src": "151:11:3",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_type$_t_contract$_ERC721Token_$106_$",
+                    "typeString": "type(contract ERC721Token)"
+                  }
+                },
+                "nodeType": "ModifierInvocation",
+                "src": "151:31:3"
+              }
+            ],
+            "name": "",
+            "nodeType": "FunctionDefinition",
+            "overrides": null,
+            "parameters": {
+              "id": 232,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "141:2:3"
+            },
+            "returnParameters": {
+              "id": 237,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "183:0:3"
+            },
+            "scope": 240,
+            "src": "130:55:3",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "public"
+          }
+        ],
+        "scope": 241,
+        "src": "93:95:3"
       }
     ],
-    "src": "33:48:2"
+    "src": "33:157:3"
   },
   "legacyAST": {
-    "absolutePath": "/C/Users/majid/Desktop/medalsToken/contracts/Medal.sol",
+    "absolutePath": "/C/Users/majid/Desktop/projects/Medal_ERC721_token/contracts/Medal.sol",
     "exportedSymbols": {
       "Medal": [
-        130
+        240
       ]
     },
-    "id": 131,
+    "id": 241,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 129,
+        "id": 228,
         "literals": [
           "solidity",
           "^",
@@ -68,27 +270,155 @@
           ".0"
         ],
         "nodeType": "PragmaDirective",
-        "src": "33:23:2"
+        "src": "33:23:3"
+      },
+      {
+        "absolutePath": "/C/Users/majid/Desktop/projects/Medal_ERC721_token/contracts/ERC721Token.sol",
+        "file": "./ERC721Token.sol",
+        "id": 229,
+        "nodeType": "ImportDirective",
+        "scope": 241,
+        "sourceUnit": 107,
+        "src": "60:27:3",
+        "symbolAliases": [],
+        "unitAlias": ""
       },
       {
         "abstract": false,
-        "baseContracts": [],
-        "contractDependencies": [],
+        "baseContracts": [
+          {
+            "arguments": null,
+            "baseName": {
+              "contractScope": null,
+              "id": 230,
+              "name": "ERC721Token",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 106,
+              "src": "111:11:3",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_ERC721Token_$106",
+                "typeString": "contract ERC721Token"
+              }
+            },
+            "id": 231,
+            "nodeType": "InheritanceSpecifier",
+            "src": "111:11:3"
+          }
+        ],
+        "contractDependencies": [
+          11,
+          106,
+          226
+        ],
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 130,
+        "id": 240,
         "linearizedBaseContracts": [
-          130
+          240,
+          106,
+          11,
+          226
         ],
         "name": "Medal",
         "nodeType": "ContractDefinition",
-        "nodes": [],
-        "scope": 131,
-        "src": "62:17:2"
+        "nodes": [
+          {
+            "body": {
+              "id": 238,
+              "nodeType": "Block",
+              "src": "183:2:3",
+              "statements": []
+            },
+            "documentation": null,
+            "id": 239,
+            "implemented": true,
+            "kind": "constructor",
+            "modifiers": [
+              {
+                "arguments": [
+                  {
+                    "argumentTypes": null,
+                    "hexValue": "476f6c644d6564616c",
+                    "id": 234,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": true,
+                    "kind": "string",
+                    "lValueRequested": false,
+                    "nodeType": "Literal",
+                    "src": "163:11:3",
+                    "subdenomination": null,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_stringliteral_02a37d804c61cb83cfce64dff323c5fc8f31e42e4cb72680c50a9dfcd0cd1514",
+                      "typeString": "literal_string \"GoldMedal\""
+                    },
+                    "value": "GoldMedal"
+                  },
+                  {
+                    "argumentTypes": null,
+                    "hexValue": "475443",
+                    "id": 235,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": true,
+                    "kind": "string",
+                    "lValueRequested": false,
+                    "nodeType": "Literal",
+                    "src": "176:5:3",
+                    "subdenomination": null,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_stringliteral_7438d7d73ec9e46da3d0aa51b56d02f7e7bc34bd8939d3f4c05474ab1961f8e5",
+                      "typeString": "literal_string \"GTC\""
+                    },
+                    "value": "GTC"
+                  }
+                ],
+                "id": 236,
+                "modifierName": {
+                  "argumentTypes": null,
+                  "id": 233,
+                  "name": "ERC721Token",
+                  "nodeType": "Identifier",
+                  "overloadedDeclarations": [],
+                  "referencedDeclaration": 106,
+                  "src": "151:11:3",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_type$_t_contract$_ERC721Token_$106_$",
+                    "typeString": "type(contract ERC721Token)"
+                  }
+                },
+                "nodeType": "ModifierInvocation",
+                "src": "151:31:3"
+              }
+            ],
+            "name": "",
+            "nodeType": "FunctionDefinition",
+            "overrides": null,
+            "parameters": {
+              "id": 232,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "141:2:3"
+            },
+            "returnParameters": {
+              "id": 237,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "183:0:3"
+            },
+            "scope": 240,
+            "src": "130:55:3",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "public"
+          }
+        ],
+        "scope": 241,
+        "src": "93:95:3"
       }
     ],
-    "src": "33:48:2"
+    "src": "33:157:3"
   },
   "compiler": {
     "name": "solc",
@@ -98,17 +428,28 @@
     "5777": {
       "events": {},
       "links": {},
-      "address": "0x83716CB4B608665935DE246B053D08AC641e2969",
-      "transactionHash": "0x95d14ce0c4a703ce0ef6303f746b800df3d476c49d74fc9fe41278358a41a335"
+      "address": "0x170A7C6229E78DD68a02a162cCe2f65A1ceF7C16",
+      "transactionHash": "0x026f3f4945a79cf61432c65164e3496aeec89e105a05b1232e21681c12e1f592"
     }
   },
   "schemaVersion": "3.2.0",
-  "updatedAt": "2020-06-04T03:13:49.853Z",
+  "updatedAt": "2020-06-04T17:08:27.818Z",
   "networkType": "ethereum",
   "devdoc": {
-    "methods": {}
+    "methods": {
+      "tokenURI(uint256)": {
+        "details": "Throws if `_tokenId` is not a valid NFT. URIs are defined in RFC  3986. The URI may point to a JSON file that conforms to the \"ERC721  Metadata JSON Schema\"."
+      }
+    }
   },
   "userdoc": {
-    "methods": {}
+    "methods": {
+      "symbol()": {
+        "notice": "An abbreviated name for NFTs in this contract"
+      },
+      "tokenURI(uint256)": {
+        "notice": "A distinct Uniform Resource Identifier (URI) for a given asset."
+      }
+    }
   }
 }
