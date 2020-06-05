@@ -1,3 +1,5 @@
+const BigNumber = require("bignumber.js");
+
 const Medal = artifacts.require("./Medal.sol");
 
 contract("Medal", (accounts) => {
@@ -8,8 +10,8 @@ contract("Medal", (accounts) => {
   const tokenName = "GoldMedal";
   const tokenSymbol = "GTC";
   const deployerAdd = accounts[0];
-  // const tokenId_1 = 1111;
-  // const tokenId_2 = 2222;
+  const tokenId_1 = 1111;
+  const tokenId_2 = 2222;
 
   before(() => {
     return Medal.deployed().then((contractInstance) => {
@@ -70,4 +72,36 @@ contract("Medal", (accounts) => {
       );
     });
   });
+
+  describe("D.Minitng", async () => {
+    it("1.Deployer should have zero balance before mint", async () => {
+      const deployerBalance = await contract.balanceOf.call(deployerAdd);
+      assert.equal(
+        deployerBalance,
+        0,
+        `Returned ${deployerBalance} for balance of ${deployerAdd}`
+      );
+    });
+
+    it("2.Deployer should be able to mint one token", async () => {
+      contract._mint.call(deployerAdd, tokenId_1);
+      const deployerBalance = await contract.balanceOf.call(deployerAdd);
+
+      assert.equal(
+        deployerBalance,
+        0,
+        `Returned ${deployerBalance} for balance of ${deployerAdd}`
+      );
+    });
+  });
 });
+
+// function balanceOf(address _owner) external view returns(uint256);
+// function ownerOf(uint256 _tokenId) external view returns(address);
+// function safeTransferFrom(address _from, address _to, uint256 _tokenId, bytes data) external payable;
+// function safeTransferFrom(address _from, address _to, uint256 _tokenId) external payable;
+// function transferFrom(address _from, address _to, uint256 _tokenId) external payable;
+// function approve(address _approved, uint256 _tokenId) external payable;
+// function setApprovalForAll(address _operator, bool _approved) external;
+// function getApproved(uint256 _tokenId) external view returns(address);
+// function isApprovedForAll(address _owner, address _operator) external view returns(bool);

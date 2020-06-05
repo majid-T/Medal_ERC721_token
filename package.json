@@ -1,0 +1,27 @@
+{
+  "name": "medal_erc721_token",
+  "version": "1.0.0",
+  "description": "ERC721 Token",
+  "main": "truffle-config.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "bignumber.js": "^9.0.0",
+    "truffle-assert": "^0.9.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/majid-T/Medal_ERC721_token.git"
+  },
+  "author": "Majid-T",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/majid-T/Medal_ERC721_token/issues"
+  },
+  "homepage": "https://github.com/majid-T/Medal_ERC721_token#readme"
+}
