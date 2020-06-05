@@ -27,7 +27,7 @@ contract ERC721Token is IERC721Metadata, IERC165, IERC721 {
     string private __symbol;
     string private __tokenUri;
 
-    // Mapping for stroing interface ids of supoorted interfaces
+    // Mapping for stroing interface ids of supported interfaces
     mapping(bytes4 => bool) private _supportedInterfaces;
 
     //Register below on constrtuctor
@@ -270,5 +270,18 @@ contract ERC721Token is IERC721Metadata, IERC165, IERC721 {
         if (_tokenApprovals[tokenId] != address(0)) {
             _tokenApprovals[tokenId] = address(0);
         }
+    }
+
+    function _mint(address to, uint256 tokenId) internal {
+        require(to != address(0), "ERC721: mint to the zero address");
+        require(
+            _tokenOwner[tokenId] == address(0),
+            "ERC721: token already minted"
+        );
+
+        _tokenOwner[tokenId] = to;
+        _ownedTokensCount[to] += 1;
+
+        emit Transfer(address(0), to, tokenId);
     }
 }
