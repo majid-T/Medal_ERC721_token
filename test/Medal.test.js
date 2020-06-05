@@ -12,6 +12,7 @@ contract("Medal", (accounts) => {
   const tokenSymbol = "GTC";
   const addressZero = "0x0000000000000000000000000000000000000000";
   const deployerAdd = accounts[0];
+  const approvedAdd = accounts[1];
   const nonMinitngAdd = accounts[9];
   const tokenId_1 = 1111;
   const tokenId_2 = 2222;
@@ -112,7 +113,7 @@ contract("Medal", (accounts) => {
     });
   });
 
-  describe("E.balanceOf tests", async () => {
+  describe("E.Function balanceOf tests", async () => {
     it("1.Should return right value for minted tokens", async () => {
       const mintTx1 = await contract._mint(deployerAdd, tokenId_2);
       const mintTx2 = await contract._mint(deployerAdd, tokenId_3);
@@ -134,10 +135,29 @@ contract("Medal", (accounts) => {
       );
     });
 
-    it("3.Should not be able to mint excisting token", async () => {
+    it("3.Should not be able to mint existent token", async () => {
       await truffleAssert.reverts(
         contract._mint(deployerAdd, tokenId_1),
         "ERC721: token already minted."
+      );
+    });
+  });
+
+  describe("F.Function ownerOf tests", async () => {
+    it("1.Should return right owner of minted tokens", async () => {
+      const owner = await contract.ownerOf.call(tokenId_1);
+
+      assert.equal(
+        owner,
+        deployerAdd,
+        `Returned ${owner} for balance of ${tokenId_1}`
+      );
+    });
+
+    it("2.Should not be able to query for nonexcisting token", async () => {
+      await truffleAssert.reverts(
+        contract.ownerOf.call(1234),
+        "ERC721: owner query for nonexistent token"
       );
     });
   });
@@ -146,8 +166,6 @@ contract("Medal", (accounts) => {
 // event Approval( address indexed owner, address indexed approved, uint256 indexed tokenId);
 // event ApprovalForAll(address indexed owner,address indexed operator,bool approved);
 
-// function balanceOf(address _owner) external view returns(uint256);
-// function ownerOf(uint256 _tokenId) external view returns(address);
 // function safeTransferFrom(address _from, address _to, uint256 _tokenId, bytes data) external payable;
 // function safeTransferFrom(address _from, address _to, uint256 _tokenId) external payable;
 // function transferFrom(address _from, address _to, uint256 _tokenId) external payable;
@@ -155,3 +173,7 @@ contract("Medal", (accounts) => {
 // function setApprovalForAll(address _operator, bool _approved) external;
 // function getApproved(uint256 _tokenId) external view returns(address);
 // function isApprovedForAll(address _owner, address _operator) external view returns(bool);
+
+//--- Done tests
+// function balanceOf(address _owner) external view returns(uint256);
+// function ownerOf(uint256 _tokenId) external view returns(address);
