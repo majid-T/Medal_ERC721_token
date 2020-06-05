@@ -1,4 +1,5 @@
 const BigNumber = require("bignumber.js");
+const truffleAssert = require("truffle-assertions");
 
 const Medal = artifacts.require("./Medal.sol");
 
@@ -9,6 +10,7 @@ contract("Medal", (accounts) => {
   const idERC721Meta = "0x5b5e139f";
   const tokenName = "GoldMedal";
   const tokenSymbol = "GTC";
+  const addressZero = "0x0000000000000000000000000000000000000000";
   const deployerAdd = accounts[0];
   const tokenId_1 = 1111;
   const tokenId_2 = 2222;
@@ -84,17 +86,33 @@ contract("Medal", (accounts) => {
     });
 
     it("2.Deployer should be able to mint one token", async () => {
-      contract._mint.call(deployerAdd, tokenId_1);
-      const deployerBalance = await contract.balanceOf.call(deployerAdd);
+      const mintTx = await contract._mint(deployerAdd, tokenId_1);
+
+      // truffleAssert.eventEmitted(
+      //   mintTx,
+      //   "Transfer",
+      //   (obj) => {
+      //     return (
+      //       obj.from === addressZero &&
+      //       obj.to === deployerAdd &&
+      //       obj.tokeId === tokenId_1
+      //     );
+      //   },
+      //   `Error on emitting event on tx ${mintTx}`
+      // );
+      const deployerBalanceAfter = await contract.balanceOf.call(deployerAdd);
 
       assert.equal(
-        deployerBalance,
-        0,
-        `Returned ${deployerBalance} for balance of ${deployerAdd}`
+        deployerBalanceAfter,
+        1,
+        `Returned ${deployerBalanceAfter} for balance of ${deployerAdd}`
       );
     });
   });
 });
+// event Transfer( address indexed from, address indexed to, uint256 indexed tokenId);
+// event Approval( address indexed owner, address indexed approved, uint256 indexed tokenId);
+// event ApprovalForAll(address indexed owner,address indexed operator,bool approved);
 
 // function balanceOf(address _owner) external view returns(uint256);
 // function ownerOf(uint256 _tokenId) external view returns(address);
