@@ -186,7 +186,27 @@ contract("Medal", (accounts) => {
       );
     });
   });
+
+  describe("H.Function getApproved tests", async () => {
+    it("1.Should get approved info on token Id", async () => {
+      const setAdd = await contract.getApproved.call(tokenId_1);
+
+      assert.equal(
+        approvedAdd,
+        setAdd,
+        `Returned ${setAdd} as approved for ${tokenId_1}`
+      );
+    });
+
+    it("2.Should not be able query for nonexistent token ", async () => {
+      await truffleAssert.reverts(
+        contract.getApproved.call(1234),
+        "ERC721: approved query for nonexistent token"
+      );
+    });
+  });
 });
+
 // event Transfer( address indexed from, address indexed to, uint256 indexed tokenId);
 // event Approval( address indexed owner, address indexed approved, uint256 indexed tokenId);
 // event ApprovalForAll(address indexed owner,address indexed operator,bool approved);
@@ -195,10 +215,10 @@ contract("Medal", (accounts) => {
 // function safeTransferFrom(address _from, address _to, uint256 _tokenId) external payable;
 // function transferFrom(address _from, address _to, uint256 _tokenId) external payable;
 // function setApprovalForAll(address _operator, bool _approved) external;
-// function getApproved(uint256 _tokenId) external view returns(address);
 // function isApprovedForAll(address _owner, address _operator) external view returns(bool);
 
 //--- Done tests
 // function balanceOf(address _owner) external view returns(uint256);
 // function ownerOf(uint256 _tokenId) external view returns(address);
 // function approve(address _approved, uint256 _tokenId) external payable;
+// function getApproved(uint256 _tokenId) external view returns(address);
