@@ -31,7 +31,7 @@ contract ERC721Token is IERC721Metadata, IERC165, IERC721 {
     mapping(bytes4 => bool) private _supportedInterfaces;
 
     //Register below on constrtuctor
-    //   165 funct --> bytes4(keccak256('supportsInterface(bytes4)')) == 0x01ffc9a7
+    //     165 funct --> bytes4(keccak256('supportsInterface(bytes4)')) == 0x01ffc9a7
     bytes4 private constant _INTERFACE_ID_ERC165 = 0x01ffc9a7;
     /*
      *     bytes4(keccak256('balanceOf(address)')) == 0x70a08231
@@ -48,6 +48,15 @@ contract ERC721Token is IERC721Metadata, IERC165, IERC721 {
      *        0xa22cb465 ^ 0xe985e9c ^ 0x23b872dd ^ 0x42842e0e ^ 0xb88d4fde == 0x80ac58cd
      */
     bytes4 private constant _INTERFACE_ID_ERC721 = 0x80ac58cd;
+
+    /* ERC MetaData interfaces
+     *     bytes4(keccak256('name()')) == 0x06fdde03
+     *     bytes4(keccak256('symbol()')) == 0x95d89b41
+     *     bytes4(keccak256('tokenURI(uint256)')) == 0xc87b56dd
+     *
+     *     => 0x06fdde03 ^ 0x95d89b41 ^ 0xc87b56dd == 0x5b5e139f
+     */
+    bytes4 private constant _INTERFACE_ID_ERC721_METADATA = 0x5b5e139f;
 
     // Mapping from token ID to owner
     mapping(uint256 => address) private _tokenOwner;
@@ -66,6 +75,7 @@ contract ERC721Token is IERC721Metadata, IERC165, IERC721 {
         __symbol = _symbol;
         _registerInterface(_INTERFACE_ID_ERC165);
         _registerInterface(_INTERFACE_ID_ERC721);
+        _registerInterface(_INTERFACE_ID_ERC721_METADATA);
     }
 
     function name() public override view returns (string memory) {

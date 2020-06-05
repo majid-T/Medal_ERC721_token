@@ -4,8 +4,10 @@ contract("Medal", (accounts) => {
   let contract;
   const idERC165 = "0x01ffc9a7";
   const idERC721 = "0x80ac58cd";
+  const idERC721Meta = "0x5b5e139f";
   const tokenName = "GoldMedal";
   const tokenSymbol = "GTC";
+  const deployerAdd = accounts[0];
 
   before(() => {
     return Medal.deployed().then((contractInstance) => {
@@ -16,18 +18,30 @@ contract("Medal", (accounts) => {
   describe("A.deployment", async () => {
     it("1.Should deploy successfully", async () => {
       const address = contract.address;
+      console.log(`\tDeployed with address of ${address}`);
       assert.notEqual(address, 0x0);
       assert.notEqual(address, "");
       assert.notEqual(address, null);
       assert.notEqual(address, undefined);
     });
 
-    it("2.should have a name", async () => {
+    it("2.Supports ERC721MetaData funcs supportsInterface", async () => {
+      const erc721MetaComplied = await contract.supportsInterface.call(
+        idERC721Meta
+      );
+      assert.equal(
+        erc721MetaComplied,
+        true,
+        `Returned ${erc721MetaComplied} for ${idERC721Meta}`
+      );
+    });
+
+    it("3.should have a name", async () => {
       const name = await contract.name();
       assert.equal(name, tokenName);
     });
 
-    it("3.Should have a symbol", async () => {
+    it("4.Should have a symbol", async () => {
       const symbol = await contract.symbol();
       assert.equal(symbol, tokenSymbol);
     });
