@@ -116,21 +116,21 @@ contract ERC721Token is IERC721Metadata, IERC165, IERC721 {
     }
 
     // Implementing IERC721 interface functions
-    // event Transfer(
-    //     address indexed from,
-    //     address indexed to,
-    //     uint256 indexed tokenId
-    // );
-    // event Approval(
-    //     address indexed owner,
-    //     address indexed approved,
-    //     uint256 indexed tokenId
-    // );
-    // event ApprovalForAll(
-    //     address indexed owner,
-    //     address indexed operator,
-    //     bool approved
-    // );
+    event Transfer(
+        address indexed from,
+        address indexed to,
+        uint256 indexed tokenId
+    );
+    event Approval(
+        address indexed owner,
+        address indexed approved,
+        uint256 indexed tokenId
+    );
+    event ApprovalForAll(
+        address indexed owner,
+        address indexed operator,
+        bool approved
+    );
 
     function balanceOf(address owner) public override view returns (uint256) {
         require(

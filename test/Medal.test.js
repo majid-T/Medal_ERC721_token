@@ -12,8 +12,10 @@ contract("Medal", (accounts) => {
   const tokenSymbol = "GTC";
   const addressZero = "0x0000000000000000000000000000000000000000";
   const deployerAdd = accounts[0];
+  const nonMinitngAdd = accounts[9];
   const tokenId_1 = 1111;
   const tokenId_2 = 2222;
+  const tokenId_3 = 3333;
 
   before(() => {
     return Medal.deployed().then((contractInstance) => {
@@ -106,6 +108,36 @@ contract("Medal", (accounts) => {
         deployerBalanceAfter,
         1,
         `Returned ${deployerBalanceAfter} for balance of ${deployerAdd}`
+      );
+    });
+  });
+
+  describe("E.balanceOf tests", async () => {
+    it("1.Should return right value for minted tokens", async () => {
+      const mintTx1 = await contract._mint(deployerAdd, tokenId_2);
+      const mintTx2 = await contract._mint(deployerAdd, tokenId_3);
+
+      const deployerBalance = await contract.balanceOf.call(deployerAdd);
+      assert.equal(
+        deployerBalance,
+        3,
+        `Returned ${deployerBalance} for balance of ${deployerAdd}`
+      );
+    });
+
+    it("2.Should return 0 for non-minting address", async () => {
+      const nonMinitngBalance = await contract.balanceOf.call(nonMinitngAdd);
+      assert.equal(
+        nonMinitngBalance,
+        0,
+        `Returned ${nonMinitngBalance} for balance of ${nonMinitngAdd}`
+      );
+    });
+
+    it("3.Should not be able to mint excisting token", async () => {
+      await truffleAssert.reverts(
+        contract._mint(deployerAdd, tokenId_1),
+        "ERC721: token already minted."
       );
     });
   });
