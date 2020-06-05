@@ -13,6 +13,7 @@ contract("Medal", (accounts) => {
   const addressZero = "0x0000000000000000000000000000000000000000";
   const deployerAdd = accounts[0];
   const approvedAdd = accounts[1];
+  const badAdd = accounts[8];
   const nonMinitngAdd = accounts[9];
   const tokenId_1 = 1111;
   const tokenId_2 = 2222;
@@ -150,7 +151,7 @@ contract("Medal", (accounts) => {
       assert.equal(
         owner,
         deployerAdd,
-        `Returned ${owner} for balance of ${tokenId_1}`
+        `Returned ${owner} for owner of ${tokenId_1}`
       );
     });
 
@@ -158,6 +159,30 @@ contract("Medal", (accounts) => {
       await truffleAssert.reverts(
         contract.ownerOf.call(1234),
         "ERC721: owner query for nonexistent token"
+      );
+    });
+  });
+
+  describe("G.Function approve tests", async () => {
+    it("1.Should set approved to some address", async () => {
+      const approveTx = await contract.approve(approvedAdd, tokenId_1, {
+        from: deployerAdd,
+      });
+      const setAdd = await contract.getApproved.call(tokenId_1);
+
+      assert.equal(
+        approvedAdd,
+        setAdd,
+        `Returned ${setAdd} as approved for ${tokenId_1}`
+      );
+    });
+
+    it("2.Should not be able approve if not owner", async () => {
+      await truffleAssert.reverts(
+        contract.approve(badAdd, tokenId_1, {
+          from: badAdd,
+        }),
+        "ERC721: approve caller is not owner nor approved for all"
       );
     });
   });
@@ -169,7 +194,6 @@ contract("Medal", (accounts) => {
 // function safeTransferFrom(address _from, address _to, uint256 _tokenId, bytes data) external payable;
 // function safeTransferFrom(address _from, address _to, uint256 _tokenId) external payable;
 // function transferFrom(address _from, address _to, uint256 _tokenId) external payable;
-// function approve(address _approved, uint256 _tokenId) external payable;
 // function setApprovalForAll(address _operator, bool _approved) external;
 // function getApproved(uint256 _tokenId) external view returns(address);
 // function isApprovedForAll(address _owner, address _operator) external view returns(bool);
@@ -177,3 +201,4 @@ contract("Medal", (accounts) => {
 //--- Done tests
 // function balanceOf(address _owner) external view returns(uint256);
 // function ownerOf(uint256 _tokenId) external view returns(address);
+// function approve(address _approved, uint256 _tokenId) external payable;
