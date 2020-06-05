@@ -8,6 +8,8 @@ contract("Medal", (accounts) => {
   const tokenName = "GoldMedal";
   const tokenSymbol = "GTC";
   const deployerAdd = accounts[0];
+  // const tokenId_1 = 1111;
+  // const tokenId_2 = 2222;
 
   before(() => {
     return Medal.deployed().then((contractInstance) => {
@@ -36,12 +38,12 @@ contract("Medal", (accounts) => {
       );
     });
 
-    it("3.should have a name", async () => {
+    it("3.should have a name and equal to what received by constructor", async () => {
       const name = await contract.name();
       assert.equal(name, tokenName);
     });
 
-    it("4.Should have a symbol", async () => {
+    it("4.Should have a symbol and equal to what received by constructor", async () => {
       const symbol = await contract.symbol();
       assert.equal(symbol, tokenSymbol);
     });
