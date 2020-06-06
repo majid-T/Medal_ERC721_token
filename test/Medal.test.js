@@ -13,6 +13,7 @@ contract("Medal", (accounts) => {
   const addressZero = "0x0000000000000000000000000000000000000000";
   const deployerAdd = accounts[0];
   const approvedAdd = accounts[1];
+  const tokenRecAdd = accounts[2];
   const badAdd = accounts[8];
   const nonMinitngAdd = accounts[9];
   const tokenId_1 = 1111;
@@ -224,6 +225,43 @@ contract("Medal", (accounts) => {
       await truffleAssert.reverts(
         contract.setApprovalForAll.call(deployerAdd, true),
         "ERC721: approve to caller"
+      );
+    });
+  });
+
+  describe("J.Function transferFrom tests", async () => {
+    it("1.Should transfer to other address", async () => {
+      const transferTx = await contract.transferFrom(
+        deployerAdd,
+        tokenRecAdd,
+        tokenId_3
+      );
+      const newOwner = await contract.ownerOf.call(tokenId_3);
+      assert.equal(
+        newOwner,
+        tokenRecAdd,
+        `Returned ${newOwner} as new owner of ${tokenId_3} `
+      );
+    });
+
+    it("2.Should not be able transfer nonexistent token", async () => {
+      await truffleAssert.reverts(
+        contract.transferFrom(deployerAdd, tokenRecAdd, 1234),
+        "ERC721: operator query for nonexistent token"
+      );
+    });
+
+    it("3.Should not be able transfer not owned token", async () => {
+      await truffleAssert.reverts(
+        contract.transferFrom(badAdd, tokenRecAdd, tokenId_1),
+        "ERC721: transfer of token that is not own."
+      );
+    });
+
+    it("4.Should not be able transfer to zero address", async () => {
+      await truffleAssert.reverts(
+        contract.transferFrom(deployerAdd, addressZero, tokenId_1),
+        "ERC721: transfer to the zero address"
       );
     });
   });
