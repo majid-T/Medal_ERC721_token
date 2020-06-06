@@ -102,7 +102,8 @@ contract("Medal", (accounts) => {
       const { logs } = mintTx;
       const Result = logs[0].args;
       assert(
-        testEvent(Result, addressZero, deployerAdd, tokenId_1),
+        logs[0].event == eventTransfer &&
+          testEvent(Result, addressZero, deployerAdd, tokenId_1),
         "Event Transfered not emitted"
       );
       const deployerBalanceAfter = await contract.balanceOf.call(deployerAdd);
@@ -174,7 +175,8 @@ contract("Medal", (accounts) => {
       const { logs } = approveTx;
       const Result = logs[0].args;
       assert(
-        testEvent(Result, deployerAdd, approvedAdd, tokenId_1),
+        logs[0].event == eventApproval &&
+          testEvent(Result, deployerAdd, approvedAdd, tokenId_1),
         "Event Transfered not emitted"
       );
 
@@ -225,7 +227,8 @@ contract("Medal", (accounts) => {
       const { logs } = setAppAllTx;
       const Result = logs[0].args;
       assert(
-        testEvent(Result, deployerAdd, approvedAdd, true),
+        logs[0].event == eventApprovalForAll &&
+          testEvent(Result, deployerAdd, approvedAdd, true),
         "Event Transfered not emitted"
       );
 
