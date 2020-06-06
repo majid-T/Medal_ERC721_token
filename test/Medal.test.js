@@ -20,6 +20,12 @@ contract("Medal", (accounts) => {
   const tokenId_2 = 2222;
   const tokenId_3 = 3333;
   const tokenId_4 = 4444;
+  const eventTransfer = "Transfer";
+  const eventApproval = "Approval";
+  const eventApprovalForAll = "ApprovalForAll";
+  const testEvent = function (obj, par1, par2, par3) {
+    return obj[0] == par1 && obj[1] == par2 && obj[2] == par3;
+  };
 
   before(() => {
     return Medal.deployed().then((contractInstance) => {
@@ -93,19 +99,12 @@ contract("Medal", (accounts) => {
 
     it("2.Deployer should be able to mint one token", async () => {
       const mintTx = await contract._mint(deployerAdd, tokenId_1);
-
-      // truffleAssert.eventEmitted(
-      //   mintTx,
-      //   "Transfer",
-      //   (obj) => {
-      //     return (
-      //       obj.from === addressZero &&
-      //       obj.to === deployerAdd &&
-      //       obj.tokeId === tokenId_1
-      //     );
-      //   },
-      //   `Error on emitting event on tx ${mintTx}`
-      // );
+      const { logs } = mintTx;
+      const Result = logs[0].args;
+      assert(
+        testEvent(Result, addressZero, deployerAdd, tokenId_1),
+        "Event Transfered not emitted"
+      );
       const deployerBalanceAfter = await contract.balanceOf.call(deployerAdd);
 
       assert.equal(
@@ -172,6 +171,12 @@ contract("Medal", (accounts) => {
         from: deployerAdd,
       });
       const setAdd = await contract.getApproved.call(tokenId_1);
+      const { logs } = approveTx;
+      const Result = logs[0].args;
+      assert(
+        testEvent(Result, deployerAdd, approvedAdd, tokenId_1),
+        "Event Transfered not emitted"
+      );
 
       assert.equal(
         approvedAdd,
@@ -216,6 +221,14 @@ contract("Medal", (accounts) => {
         deployerAdd,
         approvedAdd
       );
+
+      const { logs } = setAppAllTx;
+      const Result = logs[0].args;
+      assert(
+        testEvent(Result, deployerAdd, approvedAdd, true),
+        "Event Transfered not emitted"
+      );
+
       assert.equal(
         isAppAll,
         true,
@@ -299,18 +312,3 @@ contract("Medal", (accounts) => {
     });
   });
 });
-
-// event Transfer( address indexed from, address indexed to, uint256 indexed tokenId);
-// event Approval( address indexed owner, address indexed approved, uint256 indexed tokenId);
-// event ApprovalForAll(address indexed owner,address indexed operator,bool approved);
-
-//--- Done tests
-// function balanceOf(address _owner) external view returns(uint256);
-// function ownerOf(uint256 _tokenId) external view returns(address);
-// function approve(address _approved, uint256 _tokenId) external payable;
-// function getApproved(uint256 _tokenId) external view returns(address);
-// function setApprovalForAll(address _operator, bool _approved) external;
-// function isApprovedForAll(address _owner, address _operator) external view returns(bool);
-// function transferFrom(address _from, address _to, uint256 _tokenId) external payable;
-// function safeTransferFrom(address _from, address _to, uint256 _tokenId, bytes data) external payable;
-// function safeTransferFrom(address _from, address _to, uint256 _tokenId) external payable;
