@@ -19,6 +19,7 @@ contract("Medal", (accounts) => {
   const tokenId_1 = 1111;
   const tokenId_2 = 2222;
   const tokenId_3 = 3333;
+  const tokenId_4 = 4444;
 
   before(() => {
     return Medal.deployed().then((contractInstance) => {
@@ -119,11 +120,12 @@ contract("Medal", (accounts) => {
     it("1.Should return right value for minted tokens", async () => {
       const mintTx1 = await contract._mint(deployerAdd, tokenId_2);
       const mintTx2 = await contract._mint(deployerAdd, tokenId_3);
+      const mintTx3 = await contract._mint(deployerAdd, tokenId_4);
 
       const deployerBalance = await contract.balanceOf.call(deployerAdd);
       assert.equal(
         deployerBalance,
-        3,
+        4,
         `Returned ${deployerBalance} for balance of ${deployerAdd}`
       );
     });
@@ -234,13 +236,13 @@ contract("Medal", (accounts) => {
       const transferTx = await contract.transferFrom(
         deployerAdd,
         tokenRecAdd,
-        tokenId_3
+        tokenId_4
       );
-      const newOwner = await contract.ownerOf.call(tokenId_3);
+      const newOwner = await contract.ownerOf.call(tokenId_4);
       assert.equal(
         newOwner,
         tokenRecAdd,
-        `Returned ${newOwner} as new owner of ${tokenId_3} `
+        `Returned ${newOwner} as new owner of ${tokenId_4} `
       );
     });
 
@@ -265,15 +267,42 @@ contract("Medal", (accounts) => {
       );
     });
   });
+
+  describe("K.Function safeTransferFrom & safeTransferFrom with data tests", async () => {
+    it("1.Should safetransfer to other address", async () => {
+      const transferTx = await contract.safeTransferFrom(
+        deployerAdd,
+        tokenRecAdd,
+        tokenId_3
+      );
+      const newOwnerT3 = await contract.ownerOf.call(tokenId_3);
+      assert.equal(
+        newOwnerT3,
+        tokenRecAdd,
+        `Returned ${newOwnerT3} as new owner of ${tokenId_3} `
+      );
+    });
+
+    it("1.Should safetransfer to other address with data", async () => {
+      const transferTx = await contract.safeTransferFrom(
+        deployerAdd,
+        tokenRecAdd,
+        tokenId_2,
+        "0x123456"
+      );
+      const newOwnerT2 = await contract.ownerOf.call(tokenId_2);
+      assert.equal(
+        newOwnerT2,
+        tokenRecAdd,
+        `Returned ${newOwnerT2} as new owner of ${tokenId_2} `
+      );
+    });
+  });
 });
 
 // event Transfer( address indexed from, address indexed to, uint256 indexed tokenId);
 // event Approval( address indexed owner, address indexed approved, uint256 indexed tokenId);
 // event ApprovalForAll(address indexed owner,address indexed operator,bool approved);
-
-// function safeTransferFrom(address _from, address _to, uint256 _tokenId, bytes data) external payable;
-// function safeTransferFrom(address _from, address _to, uint256 _tokenId) external payable;
-// function transferFrom(address _from, address _to, uint256 _tokenId) external payable;
 
 //--- Done tests
 // function balanceOf(address _owner) external view returns(uint256);
@@ -282,3 +311,6 @@ contract("Medal", (accounts) => {
 // function getApproved(uint256 _tokenId) external view returns(address);
 // function setApprovalForAll(address _operator, bool _approved) external;
 // function isApprovedForAll(address _owner, address _operator) external view returns(bool);
+// function transferFrom(address _from, address _to, uint256 _tokenId) external payable;
+// function safeTransferFrom(address _from, address _to, uint256 _tokenId, bytes data) external payable;
+// function safeTransferFrom(address _from, address _to, uint256 _tokenId) external payable;
