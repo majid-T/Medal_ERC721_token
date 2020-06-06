@@ -205,6 +205,28 @@ contract("Medal", (accounts) => {
       );
     });
   });
+
+  describe("I.Function setApprovalForAll  & isApprovedForAll tests", async () => {
+    it("1.Should set approval for all", async () => {
+      const setAppAllTx = await contract.setApprovalForAll(approvedAdd, true);
+      const isAppAll = await contract.isApprovedForAll(
+        deployerAdd,
+        approvedAdd
+      );
+      assert.equal(
+        isAppAll,
+        true,
+        `Returned ${isAppAll} as approved for ${deployerAdd} as owner ${approvedAdd} as operator`
+      );
+    });
+
+    it("2.Should not be able approve yourself", async () => {
+      await truffleAssert.reverts(
+        contract.setApprovalForAll.call(deployerAdd, true),
+        "ERC721: approve to caller"
+      );
+    });
+  });
 });
 
 // event Transfer( address indexed from, address indexed to, uint256 indexed tokenId);
@@ -214,11 +236,11 @@ contract("Medal", (accounts) => {
 // function safeTransferFrom(address _from, address _to, uint256 _tokenId, bytes data) external payable;
 // function safeTransferFrom(address _from, address _to, uint256 _tokenId) external payable;
 // function transferFrom(address _from, address _to, uint256 _tokenId) external payable;
-// function setApprovalForAll(address _operator, bool _approved) external;
-// function isApprovedForAll(address _owner, address _operator) external view returns(bool);
 
 //--- Done tests
 // function balanceOf(address _owner) external view returns(uint256);
 // function ownerOf(uint256 _tokenId) external view returns(address);
 // function approve(address _approved, uint256 _tokenId) external payable;
 // function getApproved(uint256 _tokenId) external view returns(address);
+// function setApprovalForAll(address _operator, bool _approved) external;
+// function isApprovedForAll(address _owner, address _operator) external view returns(bool);
